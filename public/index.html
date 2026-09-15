@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<input id="progressPercent" placeholder="Progress %">
+<input id="hoursPlayed" placeholder="Hours Played">
+<select id="status">
+    <option>Not Started</option>
+    <option>In Progress</option>
+    <option>Completed</option>
+    <option>Dropped</option>
+
+</select>
+<button onclick="saveProgress()">Save</button>
+
+<button onclick="clearSelection()">Cancel</button>
+<head>
+    <title>Game Backlog Tracker</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="recommendationBox">
+    Recommended Game: None
+</div>
+
+<div class="top-bar">
+    <button onclick="showAddForm()">Add</button>
+    <button onclick="editSelected()">Edit</button>
+    <button onclick="deleteSelected()">Delete</button>
+</div>
+
+<div class="container">
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <h4>Filter</h4>
+        <button onclick="filterGames('all')">All</button>
+        <button onclick="filterGames('open')">Open-Ended</button>
+        <button onclick="filterGames('closed')">Closed-Ended</button>
+    </div>
+
+    <div id="statsPanel" class="stats-panel">
+
+        <div class="stat-box">
+            <h3>Total Games</h3>
+            <p id="totalGamesStat">0</p>
+        </div>
+
+        <div class="stat-box">
+            <h3>Completed</h3>
+            <p id="completedStat">0</p>
+        </div>
+
+        <div class="stat-box">
+            <h3>Total Hours</h3>
+            <p id="hoursStat">0</p>
+        </div>
+
+        <div class="stat-box">
+            <h3>Average Completion</h3>
+            <p id="completionStat">0%</p>
+        </div>
+
+    </div>
+
+    <!-- Main Grid -->
+    <div class="main">
+        <h2 id="totalGames">Total Games: 0</h2>
+        <div id="gameGrid" class="grid"></div>
+    </div>
+
+</div>
+
+<!-- Modal (Add/Edit) -->
+<div id="modal" class="modal hidden">
+    <input id="title" placeholder="Title">
+    <input id="genre" placeholder="Genre">
+    <input id="hours" placeholder="Estimated Hours">
+    <label>
+        Open Ended
+        <input type="checkbox" id="openEnded" onchange="toggleProgressInputs()">
+    </label>
+
+    <button onclick="submitGame()">Save</button>
+    <button onclick="closeModal()">Cancel</button>
+</div>
+
+<script src="App.js"></script>
+<link rel="stylesheet" href="style.css">
+<script src="App.js"></script>
+</body>
+</html>
